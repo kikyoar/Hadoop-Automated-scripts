@@ -1,0 +1,5 @@
+- hosts: required_java
+  remote_user: root
+
+  roles: 
+    - java_install

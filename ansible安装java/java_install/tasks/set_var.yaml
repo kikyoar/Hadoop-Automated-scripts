@@ -1,0 +1,22 @@
+# - name: set environment variables_1
+  # shell: echo 'export JAVA_HOME=/usr/local/java' >>/etc/profile
+# - name: set environment variables_2
+  # shell: echo 'export JRE_HOME=${JAVA_HOME}/jre' >>/etc/profile
+# - name: set environment variables_3
+  # shell: echo 'export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib' >>/etc/profile
+# - name: set environment variables_4
+  # shell: echo 'export PATH=$JAVA_HOME/bin:$PATH:$HOME/bin:$JAVA_HOME/bin' >>/etc/profile
+# - name: set environment variables_5
+  # shell: source /etc/profile
+
+# 使用lineinfile,这样显得专业一点
+- name: set environment variables_1
+  lineinfile: dest=/etc/profile line='export JAVA_HOME=/usr/local/java'
+- name: set environment variables_2
+  lineinfile: dest=/etc/profile line='export JRE_HOME=${JAVA_HOME}/jre'
+- name: set environment variables_3
+  lineinfile: dest=/etc/profile line='export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib'
+- name: set environment variables_4
+  lineinfile: dest=/etc/profile line='export PATH=$JAVA_HOME/bin:$PATH:$HOME/bin:$JAVA_HOME/bin'
+- name: set environment variables_5
+  shell: source /etc/profile

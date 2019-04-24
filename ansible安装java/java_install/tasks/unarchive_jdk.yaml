@@ -1,0 +1,3 @@
+# 解压缩jdk
+- name: unarchive java
+  unarchive: src={{ java_packages }} dest=/usr/local/ copy=yes mode=0755

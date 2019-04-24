@@ -1,0 +1,5 @@
+- include: uninstall_openjdk.yaml
+- include: unarchive_jdk.yaml
+- include: ln_jdk.yaml
+- include: set_var.yaml
+- include: check.yaml

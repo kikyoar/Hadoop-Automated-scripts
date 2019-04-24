@@ -1,0 +1,18 @@
+# 卸载自带的jdk
+- name: visit jdk
+  shell: rpm -qa | grep jdk
+  register: jdk_result
+  ignore_errors: True
+
+- name: visit java
+  shell: rpm -qa | grep java
+  register: java_result
+  ignore_errors: True
+
+- name: uninstall jdk
+  shell: rpm -qa | grep jdk | xargs rpm -e --nodeps
+  when: jdk_result is succeeded
+
+- name: uninstall java
+  shell: rpm -qa | grep java | xargs rpm -e --nodeps
+  when: jdk_result is succeeded
