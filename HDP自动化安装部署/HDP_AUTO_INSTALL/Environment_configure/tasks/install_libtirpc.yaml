@@ -1,0 +1,27 @@
+- name: copy libtirpc-0.2.4-0.10.el7.x86_64.rpm
+  copy: src=libtirpc-0.2.4-0.10.el7.x86_64.rpm dest=/opt/libtirpc-0.2.4-0.10.el7.x86_64.rpm
+
+- name: copy libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+  copy: src=libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm dest=/opt/libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+
+# - name: rpm libtirpc-0.2.4-0.10.el7.x86_64.rpm
+#   shell: rpm -i /opt/libtirpc-0.2.4-0.10.el7.x86_64.rpm
+
+# - name: rpm libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+#   shell: rpm -i /opt/libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+
+
+
+- name: visit jdk
+  shell: rpm -qa | grep libtirpc
+  register: libtirpc_result
+  ignore_errors: True
+
+
+- name: rpm libtirpc-0.2.4-0.10.el7.x86_64.rpm
+  shell: rpm -i /opt/libtirpc-0.2.4-0.10.el7.x86_64.rpm
+  when: libtirpc_result is failed
+
+- name: rpm libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+  shell: rpm -i /opt/libtirpc-devel-0.2.4-0.10.el7.x86_64.rpm
+  when: libtirpc_result is failed

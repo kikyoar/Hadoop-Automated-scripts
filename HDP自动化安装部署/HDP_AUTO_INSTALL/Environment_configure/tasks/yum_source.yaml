@@ -1,0 +1,11 @@
+- name: remove repo
+  shell: rm -rf /etc/yum.repos.d/*.repo
+
+- name: copy ambari repo
+  copy: src=/etc/yum.repos.d/ambari.repo dest=/etc/yum.repos.d/ambari.repo backup=yes 
+
+- name: copy centos7 repo
+  copy: src=/etc/yum.repos.d/centos7.repo dest=/etc/yum.repos.d/centos7.repo backup=yes
+
+- name: yum clean all
+  shell: yum clean all && yum makecache

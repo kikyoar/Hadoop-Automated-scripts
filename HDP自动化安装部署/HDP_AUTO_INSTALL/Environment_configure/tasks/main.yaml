@@ -1,0 +1,5 @@
+- include: disable_firewalld.yaml
+- include: disable_selinux.yaml
+- include: yum_source.yaml
+- include: install_libtirpc.yaml
+- include: ntpd_install.yaml

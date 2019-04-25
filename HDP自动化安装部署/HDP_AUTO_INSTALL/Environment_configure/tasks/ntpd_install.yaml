@@ -1,0 +1,8 @@
+- name: yum ntp
+  yum: name=ntp
+
+- name: configure ntpd.conf
+  copy: src=ntp.conf dest=/etc/ntp.conf backup=yes
+
+- name: start ntpd
+  shell: systemctl start ntpd && systemctl enable ntpd

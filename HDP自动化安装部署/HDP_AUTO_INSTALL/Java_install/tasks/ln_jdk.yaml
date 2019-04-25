@@ -1,0 +1,2 @@
+- name: set soft link
+  shell: ln -s /usr/local/{{ java_install_name }} /usr/local/java
